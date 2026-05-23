@@ -1,6 +1,7 @@
 import React from 'react';
-import './Button.css';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import './Button.css';
 
 export const Button = ({
   children,
@@ -10,6 +11,8 @@ export const Button = ({
   href,
   icon: Icon,
   className = '',
+  onClick,
+  type = 'button',
   ...props
 }) => {
   const classes = `btn btn-${variant} btn-${size} ${className}`;
@@ -23,23 +26,44 @@ export const Button = ({
 
   if (to) {
     return (
-      <Link to={to} className={classes} {...props}>
-        {content}
+      <Link to={to} style={{ textDecoration: 'none' }}>
+        <motion.div 
+          className={classes} 
+          whileTap={{ scale: 0.98 }} 
+          transition={{ duration: 0.1, ease: "easeOut" }} 
+          {...props}
+        >
+          {content}
+        </motion.div>
       </Link>
     );
   }
 
   if (href) {
     return (
-      <a href={href} className={classes} {...props}>
-        {content}
+      <a href={href} style={{ textDecoration: 'none' }}>
+        <motion.div 
+          className={classes} 
+          whileTap={{ scale: 0.98 }} 
+          transition={{ duration: 0.1, ease: "easeOut" }} 
+          {...props}
+        >
+          {content}
+        </motion.div>
       </a>
     );
   }
 
   return (
-    <button className={classes} {...props}>
+    <motion.button 
+      className={classes}
+      onClick={onClick}
+      type={type}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.1, ease: "easeOut" }}
+      {...props}
+    >
       {content}
-    </button>
+    </motion.button>
   );
 };

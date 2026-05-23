@@ -49,7 +49,7 @@ export const Home = () => {
         </motion.div>
       </section>
 
-      {/* Execution System Section */}
+      {/* Execution Pipeline Section */}
       <section className="execution-section">
         <motion.div 
           className="section-header"
@@ -59,28 +59,31 @@ export const Home = () => {
           variants={fadeUp}
         >
           <div className="section-label">The Methodology</div>
-          <h2 className="section-title">The Execution Loop.</h2>
+          <h2 className="section-title">The Execution Engine.</h2>
         </motion.div>
 
-        <div className="execution-grid">
+        <div className="pipeline-container">
+          <div className="pipeline-line"></div>
           {[
-            { step: '01', title: 'Daily Task', desc: 'Receive a strict architectural requirement. Read the documentation. Understand the constraints.' },
-            { step: '02', title: 'Live Submission', desc: 'Write the code in your local environment. Push directly to the GitHub repository.' },
-            { step: '03', title: 'Feedback', desc: 'Undergo rigorous code review by senior engineers. Re-factor until it meets production standards.' },
-            { step: '04', title: 'Project Ship', desc: 'Deploy the system. Monitor its performance. Add it to your professional portfolio.' }
+            { step: 'Phase 01', title: 'Architectural Requirement', desc: 'Receive a strict system requirement. Read the documentation. Understand the constraints. No tutorials, just raw engineering specifications.' },
+            { step: 'Phase 02', title: 'Live Workspace Execution', desc: 'Write the code in your local environment. Push directly to the GitHub repository. Integrate with real CI/CD pipelines.' },
+            { step: 'Phase 03', title: 'Senior Code Review', desc: 'Undergo rigorous code review by senior engineers. Re-factor until it meets production standards. The standard is absolute.' },
+            { step: 'Phase 04', title: 'Production Ship', desc: 'Deploy the system. Monitor its performance. Add it to your professional portfolio. True mastery is built by shipping.' }
           ].map((item, index) => (
             <motion.div 
               key={index}
-              className="execution-step"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeUp}
-              transition={{ delay: index * 0.1 }}
+              className="pipeline-node"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             >
-              <div className="step-number">{item.step}</div>
-              <h3 className="step-title">{item.title}</h3>
-              <p className="step-desc">{item.desc}</p>
+              <div className="pipeline-dot"></div>
+              <div className="pipeline-content">
+                <div className="pipeline-step">{item.step}</div>
+                <h3 className="pipeline-title">{item.title}</h3>
+                <p className="pipeline-desc">{item.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

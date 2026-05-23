@@ -73,56 +73,85 @@
   letter-spacing: -0.01em;
 }
 
-.execution-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-6);
+/* Execution Pipeline Section */
+.execution-section {
+  padding: var(--space-32) var(--space-6);
+  max-width: 1000px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--color-border);
 }
 
-@media (min-width: 768px) {
-  .execution-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.pipeline-container {
+  position: relative;
+  padding-left: var(--space-12);
+  margin-top: var(--space-16);
 }
 
-@media (min-width: 1024px) {
-  .execution-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.pipeline-line {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-border);
 }
 
-.execution-step {
+.pipeline-node {
+  position: relative;
+  margin-bottom: var(--space-24);
+}
+
+.pipeline-node:last-child {
+  margin-bottom: 0;
+}
+
+.pipeline-dot {
+  position: absolute;
+  left: calc(-1 * var(--space-12) - 3px);
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-accent-blue);
+  border-radius: var(--radius-full);
+  z-index: 2;
+  transition: all var(--transition-slow);
+}
+
+.pipeline-content {
   background-color: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  padding: var(--space-8);
+  padding: var(--space-12);
   transition: transform var(--transition-normal), border-color var(--transition-normal);
 }
 
-.execution-step:hover {
-  border-color: var(--color-border-hover);
-  transform: translateY(-4px);
+.pipeline-content:hover {
+  border-color: var(--color-accent-blue-transparent);
+  transform: translateX(8px);
 }
 
-.step-number {
+.pipeline-step {
   font-family: var(--font-heading);
   font-size: var(--text-sm);
-  color: var(--color-text-tertiary);
-  margin-bottom: var(--space-8);
-  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-blue);
+  margin-bottom: var(--space-4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.step-title {
-  font-size: var(--text-xl);
+.pipeline-title {
+  font-size: var(--text-3xl);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   font-family: var(--font-heading);
+  letter-spacing: -0.01em;
 }
 
-.step-desc {
-  font-size: var(--text-sm);
+.pipeline-desc {
+  font-size: var(--text-base);
   color: var(--color-text-secondary);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* Founder Story Section */

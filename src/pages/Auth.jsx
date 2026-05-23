@@ -5,9 +5,6 @@ import { Button } from '../components/ui/Button';
 import './Auth.css';
 
 export const Auth = () => {
-  const location = useLocation();
-  const isLogin = location.pathname === '/login';
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,9 +24,9 @@ export const Auth = () => {
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
       >
         <div className="auth-header">
-          <h1 className="auth-title">{isLogin ? 'Workspace Authentication' : 'Initialize Workspace'}</h1>
+          <h1 className="auth-title">Workspace Authentication</h1>
           <p className="auth-subtitle">
-            {isLogin ? 'Secure access to your execution environment.' : 'Set up your creator profile and begin execution.'}
+            Secure access to your execution environment.
           </p>
         </div>
 
@@ -61,16 +58,12 @@ export const Auth = () => {
           </div>
 
           <Button variant="primary" type="submit" style={{ marginTop: 'var(--space-4)' }}>
-            {isLogin ? 'Authenticate' : 'Initialize Profile'}
+            Authenticate
           </Button>
         </form>
 
         <div className="auth-footer">
-          {isLogin ? (
-            <p>New to Srushti? <Link to="/register" className="auth-link">Create workspace</Link></p>
-          ) : (
-            <p>Already initialized? <Link to="/login" className="auth-link">Authenticate</Link></p>
-          )}
+          <p>New to Srushti? <Link to="/register" className="auth-link">Initialize workspace</Link></p>
         </div>
       </motion.div>
     </div>

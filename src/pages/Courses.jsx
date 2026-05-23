@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Layers } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import './Courses.css';
@@ -69,6 +70,12 @@ const pathways = [
 ];
 
 export const Courses = () => {
+  const navigate = useNavigate();
+
+  const handleInitialize = (courseName) => {
+    navigate('/register', { state: { courseName } });
+  };
+
   return (
     <div className="courses-wrapper">
       <motion.div 
@@ -114,8 +121,13 @@ export const Courses = () => {
               </div>
               
               <div className="pathway-action" style={{ marginTop: 'auto' }}>
-                <Button variant={isFlagship ? "primary" : "secondary"} size="sm" icon={ArrowRight}>
-                  View Pathway
+                <Button 
+                  variant={isFlagship ? "primary" : "secondary"} 
+                  size="sm" 
+                  icon={ArrowRight}
+                  onClick={() => handleInitialize(pathway.title)}
+                >
+                  Initialize Pathway
                 </Button>
               </div>
             </motion.div>
@@ -136,7 +148,7 @@ export const Courses = () => {
         <p className="bundle-desc">
           Gain unrestricted access to all current and future engineering pathways, integrated directly into your creator workspace.
         </p>
-        <Button variant="primary">
+        <Button variant="primary" onClick={() => handleInitialize('Full Summer Bundle')}>
           Initialize Full Access
         </Button>
       </motion.div>

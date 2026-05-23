@@ -3,6 +3,7 @@ import { PageLayout } from './components/layout/PageLayout';
 import { Home } from './pages/Home';
 import { Dashboard } from './pages/Dashboard';
 import { Auth } from './pages/Auth';
+import { Register } from './pages/Register';
 import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Courses } from './pages/Courses';
@@ -17,7 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Auth />} />
-          <Route path="/register" element={<Auth />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </PageLayout>
